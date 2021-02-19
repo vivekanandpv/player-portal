@@ -9,10 +9,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>0</td>
-      <td>Title here</td>
-      <td>completed</td>
+    <tr *ngFor="let item of items | async">
+      <td>{{ item.id }}</td>
+      <td>{{ item.title }}</td>
+      <td>{{ item.completed ? "Yes" : "No" }}</td>
     </tr>
   </tbody>
 </table>
