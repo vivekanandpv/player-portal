@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-r-form',
@@ -20,4 +20,24 @@ export class RFormComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  get name(): FormControl {
+    return this.registrationForm.controls['name'] as FormControl;
+  }
+
+  get debut(): FormControl {
+    return this.registrationForm.controls['debut'] as FormControl;
+  }
+
+  get genre(): FormControl {
+    return this.registrationForm.controls['genre'] as FormControl;
+  }
+
+  get isActive(): FormControl {
+    return this.registrationForm.controls['isActive'] as FormControl;
+  }
+
+  get shortBio(): FormControl {
+    return this.registrationForm.controls['shortBio'] as FormControl;
+  }
 }
