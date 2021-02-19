@@ -2,7 +2,12 @@
 
 <hr />
 
-<form novalidate autocomplete="off" [formGroup]="registrationForm">
+<form
+  novalidate
+  autocomplete="off"
+  [formGroup]="registrationForm"
+  (ngSubmit)="onSubmit()"
+>
   <div class="form-group">
     <label>Name</label>
     <input type="text" class="form-control" name="name" [formControl]="name" />

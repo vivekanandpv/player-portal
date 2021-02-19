@@ -40,4 +40,8 @@ export class RFormComponent implements OnInit {
   get shortBio(): FormControl {
     return this.registrationForm.controls['shortBio'] as FormControl;
   }
+
+  onSubmit() {
+    console.log('Submit handler called');
+  }
 }
