@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { RestService } from 'src/app/services/rest.service';
 
 @Component({
@@ -7,12 +8,11 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  constructor(public restService: RestService) {}
+  items: Observable<any[]>;
 
-  ngOnInit(): void {
-    this.restService.getItems().subscribe(
-      (items) => console.log(items),
-      (error) => console.log('Error occurred', error)
-    );
+  constructor(private restService: RestService) {
+    this.items = this.restService.getItems();
   }
+
+  ngOnInit(): void {}
 }
