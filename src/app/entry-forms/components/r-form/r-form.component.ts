@@ -62,6 +62,10 @@ export class RFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Submit handler called', this.registrationForm.value);
+    if (this.registrationForm.valid) {
+      console.log('Submit handler called', this.registrationForm.value);
+    } else {
+      alert('Validation errors!');
+    }
   }
 }
