@@ -9,5 +9,10 @@ import { RestService } from 'src/app/services/rest.service';
 export class HomeComponent implements OnInit {
   constructor(public restService: RestService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.restService.getItems().subscribe(
+      (items) => console.log(items),
+      (error) => console.log('Error occurred', error)
+    );
+  }
 }
