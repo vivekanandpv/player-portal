@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 
@@ -16,7 +18,7 @@ export class RFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
-      name: ['Default Name', [Validators.pattern(/^[A-Za-z ]{3,50}$/)]],
+      name: ['Default Name', [this.validateName.bind(this)]],
       debut: [2021, [Validators.min(1990), Validators.max(2021)]],
       genre: ['cricket', [Validators.required]],
       isActive: [true],
@@ -44,6 +46,19 @@ export class RFormComponent implements OnInit {
 
   get shortBio(): FormControl {
     return this.registrationForm.controls['shortBio'] as FormControl;
+  }
+
+  validateName(ctl: AbstractControl): ValidationErrors | null {
+    const value = ctl.value;
+
+    if (/^[A-Za-z ]{3,50}$/.test(value)) {
+      //  validation passing. return null
+      return null;
+    } else {
+      return {
+        regexError: true,
+      };
+    }
   }
 
   onSubmit() {
