@@ -1,7 +1,12 @@
 <h3>Login Form</h3>
 
 <hr />
-<form novalidate autocomplete="off" #form="ngForm">
+<form
+  novalidate
+  autocomplete="off"
+  #form="ngForm"
+  (ngSubmit)="onSubmit(form.value)"
+>
   <div class="form-group">
     <label>Username</label>
     <input type="text" class="form-control" name="username" ngModel />
