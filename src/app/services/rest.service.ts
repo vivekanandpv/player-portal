@@ -8,7 +8,7 @@ export class RestService {
   constructor(private http: HttpClient) {}
 
   getItems() {
-    return this.http.get('https://jsonplaceholder.typicode.com/todos');
+    return this.http.get<any[]>('https://jsonplaceholder.typicode.com/todos');
   }
 
   createPlayer(formData: any) {
