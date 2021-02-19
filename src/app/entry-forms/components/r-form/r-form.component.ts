@@ -7,6 +7,7 @@ import {
   ValidationErrors,
   Validators,
 } from '@angular/forms';
+import { RestService } from 'src/app/services/rest.service';
 
 @Component({
   selector: 'app-r-form',
@@ -16,7 +17,7 @@ import {
 export class RFormComponent implements OnInit {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public restService: RestService) {
     this.registrationForm = this.fb.group({
       name: ['Default Name', [this.validateName.bind(this)]],
       debut: [2021, [Validators.min(1990), Validators.max(2021)]],

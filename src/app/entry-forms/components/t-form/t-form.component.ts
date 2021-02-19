@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestService } from 'src/app/services/rest.service';
 
 @Component({
   selector: 'app-t-form',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./t-form.component.scss'],
 })
 export class TFormComponent implements OnInit {
-  constructor() {}
+  constructor(public restService: RestService) {}
 
   ngOnInit(): void {}
 
