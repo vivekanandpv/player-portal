@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-r-form',
@@ -12,7 +17,7 @@ export class RFormComponent implements OnInit {
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
       name: ['Default Name'],
-      debut: [2021],
+      debut: [2021, [Validators.min(1990), Validators.max(2021)]],
       genre: ['cricket'],
       isActive: [true],
       shortBio: ['some bio here...'],

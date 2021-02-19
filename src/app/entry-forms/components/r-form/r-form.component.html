@@ -20,6 +20,8 @@
       name="debut"
       [formControl]="debut"
     />
+    <p class="text-danger" *ngIf="debut.hasError('min')">Minium is 1990</p>
+    <p class="text-danger" *ngIf="debut.hasError('max')">Maximum is 2021</p>
   </div>
   <div class="form-group">
     <label>Genre</label>
