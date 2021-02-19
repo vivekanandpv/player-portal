@@ -7,11 +7,14 @@ import { RestService } from 'src/app/services/rest.service';
   styleUrls: ['./t-form.component.scss'],
 })
 export class TFormComponent implements OnInit {
-  constructor(public restService: RestService) {}
+  constructor(private restService: RestService) {}
 
   ngOnInit(): void {}
 
   onSubmit(formData: any) {
-    console.log('Form submitted', formData);
+    this.restService.updatePlayer(formData, 1004).subscribe(
+      (res) => console.log('Success', res),
+      (error) => console.log('Error', error)
+    );
   }
 }
