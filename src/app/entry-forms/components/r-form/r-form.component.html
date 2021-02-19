@@ -11,6 +11,9 @@
   <div class="form-group">
     <label>Name</label>
     <input type="text" class="form-control" name="name" [formControl]="name" />
+    <p class="text-danger" *ngIf="name.hasError('pattern')">
+      Only characters [3, 50]
+    </p>
   </div>
   <div class="form-group">
     <label>Debut</label>

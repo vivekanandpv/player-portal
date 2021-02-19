@@ -16,7 +16,7 @@ export class RFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.registrationForm = this.fb.group({
-      name: ['Default Name'],
+      name: ['Default Name', [Validators.pattern(/^[A-Za-z ]{3,50}$/)]],
       debut: [2021, [Validators.min(1990), Validators.max(2021)]],
       genre: ['cricket'],
       isActive: [true],
