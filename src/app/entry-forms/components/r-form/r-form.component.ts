@@ -17,7 +17,7 @@ import { RestService } from 'src/app/services/rest.service';
 export class RFormComponent implements OnInit {
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public restService: RestService) {
+  constructor(private fb: FormBuilder, private restService: RestService) {
     this.registrationForm = this.fb.group({
       name: ['Default Name', [this.validateName.bind(this)]],
       debut: [2021, [Validators.min(1990), Validators.max(2021)]],
@@ -63,6 +63,9 @@ export class RFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Submit handler called', this.registrationForm.value);
+    this.restService.createPlayer(this.registrationForm.value).subscribe(
+      (res) => console.log('Success', res),
+      (error) => console.log('Error', error)
+    );
   }
 }
